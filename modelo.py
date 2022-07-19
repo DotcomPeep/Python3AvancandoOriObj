@@ -43,13 +43,20 @@ class Serie(Programa):
 def pula_linha():
     print("\n")
 
-class Playlist():
+class Playlist:
     def __init__(self, nome, programas):
         self.nome = nome
-        self.programas = programas
+        self._programas = programas
 
-    def tamanho(self):
-        return len(self.programas)
+    def __getitem__(self, item):
+        return self._programas[item]
+
+    @property
+    def listagem(self):
+        return self._programas
+
+    def __len__(self):
+        return len(self._programas)
 
 
 Helsing = Filme('Van Helsing - O caçador de monstros', 2004, 131)
@@ -80,5 +87,15 @@ b99.dar_like()
 filme_e_series = [Helsing, tmep, himym, b99]
 playlist_fim_de_semana = Playlist('Fim de semana', filme_e_series)
 
-for programa in playlist_fim_de_semana.programas:
+print(f'Tamanho da playlist: {len(playlist_fim_de_semana)}')
+
+#após __getitem__ --> pode-se percorrer pela lista
+#print(playlist_fim_de_semana[0]) Van Helsing
+
+#print(b99 in playlist_fim_de_semana) verificando se b99 está dentro da lista após adicionar 
+# a função __getitem__
+
+for programa in playlist_fim_de_semana.listagem:
     print(programa)
+
+#print(f'tá ou não tá? {himym in playlist_fim_de_semana}')
