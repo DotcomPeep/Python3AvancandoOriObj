@@ -95,7 +95,10 @@ print(f'Tamanho da playlist: {len(playlist_fim_de_semana)}')
 #print(b99 in playlist_fim_de_semana) verificando se b99 está dentro da lista após adicionar 
 # a função __getitem__
 
-for programa in playlist_fim_de_semana.listagem:
+for programa in playlist_fim_de_semana:
     print(programa)
+
+#for programa in playlist_fim_de_semana.listagem:
+#    print(programa)
 
 #print(f'tá ou não tá? {himym in playlist_fim_de_semana}')
